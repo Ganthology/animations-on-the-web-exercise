@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { useOnClickOutside } from "usehooks-ts"
 
 export const AppStoreSharedLayoutView = () => {
@@ -25,61 +24,76 @@ export const AppStoreSharedLayoutView = () => {
 
   return (
     <>
-      {activeGame ? (
-        <>
-          <motion.div
-            className="pointer-events-none absolute inset-0 z-10 bg-black/20"
-            // animate={{ opacity: activeGame ? 1 : 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.1 } }}
-          />
-          <div className="absolute inset-0 z-10 grid place-items-center">
+      <AnimatePresence>
+        {activeGame ? (
+          <>
             <motion.div
-              className="flex h-fit w-[500px] cursor-pointer flex-col items-start gap-4 overflow-hidden bg-white p-4"
-              ref={ref}
-              style={{ borderRadius: 12 }}
-              layoutId={activeGame.title + "container"}
-            >
-              <div className="flex w-full items-center gap-4">
-                <motion.img
-                  layoutId={activeGame.title + "image"}
-                  height={56}
-                  width={56}
-                  alt="Game"
-                  src={activeGame.image}
-                  style={{ borderRadius: 12 }}
-                />
-                <div className="flex grow items-center justify-between">
-                  <div className="flex flex-col p-0">
-                    <motion.h2
-                      className="text-sm font-medium"
-                      layoutId={activeGame.title + "title"}
+              className="pointer-events-none absolute inset-0 z-10 bg-black/20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                layout: { duration: 0.5, type: "spring", bounce: 0.5 },
+              }}
+            />
+            <div className="absolute inset-0 z-10 grid place-items-center">
+              <motion.div
+                className="flex h-fit w-[500px] cursor-pointer flex-col items-start gap-4 overflow-hidden bg-white p-4"
+                ref={ref}
+                style={{ borderRadius: 12 }}
+                layoutId={activeGame.title + "container"}
+                // transition={{
+                //   layout: { duration: 0.5, type: "spring", bounce: 0.2 },
+                // }}
+              >
+                <div className="flex w-full items-center gap-4">
+                  <motion.img
+                    layoutId={activeGame.title + "image"}
+                    height={56}
+                    width={56}
+                    alt="Game"
+                    src={activeGame.image}
+                    style={{ borderRadius: 12 }}
+                  />
+                  <div className="flex grow items-center justify-between">
+                    <div className="flex flex-col p-0">
+                      <motion.h2
+                        className="text-sm font-medium"
+                        layoutId={activeGame.title + "title"}
+                      >
+                        {activeGame.title}
+                      </motion.h2>
+                      <motion.p
+                        className="text-sm text-[#63635d]"
+                        layoutId={activeGame.title + "description"}
+                      >
+                        {activeGame.description}
+                      </motion.p>
+                    </div>
+                    <motion.button
+                      className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]"
+                      layoutId={activeGame.title + "button"}
                     >
-                      {activeGame.title}
-                    </motion.h2>
-                    <motion.p
-                      className="text-sm text-[#63635d]"
-                      layoutId={activeGame.title + "description"}
-                    >
-                      {activeGame.description}
-                    </motion.p>
+                      Get
+                    </motion.button>
                   </div>
-                  <motion.button
-                    className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]"
-                    layoutId={activeGame.title + "button"}
-                  >
-                    Get
-                  </motion.button>
                 </div>
-              </div>
-              <motion.p layout className="text-sm text-[#63635d]">
-                {activeGame.longDescription}
-              </motion.p>
-            </motion.div>
-          </div>
-        </>
-      ) : null}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    duration: 0.1,
+                  }}
+                  className="text-sm text-[#63635d]"
+                >
+                  {activeGame.longDescription}
+                </motion.p>
+              </motion.div>
+            </div>
+          </>
+        ) : null}
+      </AnimatePresence>
       <ul className="relative mx-0 my-12 flex w-full flex-col items-center p-0">
         {GAMES.map((game) => (
           <motion.li
@@ -88,6 +102,9 @@ export const AppStoreSharedLayoutView = () => {
             style={{ borderRadius: 8 }}
             className="group flex w-[386px] cursor-pointer items-center gap-4 p-0"
             layoutId={game.title + "container"}
+            // transition={{
+            //   layout: { duration: 0.5, type: "spring", bounce: 0.2 },
+            // }}
           >
             <motion.img
               layoutId={game.title + "image"}
