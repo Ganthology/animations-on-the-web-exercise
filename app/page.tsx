@@ -1,8 +1,31 @@
+import { TableOfContent } from "@/components/table-of-content"
+
 export default function Home() {
   return (
-    <main className="grid h-screen w-screen place-items-center bg-gray-900">
-      <h1>Entry page</h1>
-      <p>TODO: Toc for redirecting</p>
+    <main className="h-screen w-screen bg-gray-50 p-12">
+      <div className="flex w-full flex-col items-center justify-center gap-4">
+        <h1 className="text-3xl font-semibold">Homework</h1>
+        <p className="font-medium">
+          <a
+            href="https://animations.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="italic underline hover:bg-gray-900 hover:text-gray-50"
+          >
+            Animations on the web
+          </a>
+          {" by "}
+          <a
+            href="https://emilkowal.ski/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="italic underline hover:bg-gray-900 hover:text-gray-50"
+          >
+            emilkowal.ski
+          </a>
+        </p>
+        <TableOfContent />
+      </div>
     </main>
   )
 }
