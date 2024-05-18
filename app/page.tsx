@@ -6,6 +6,7 @@ export default function Home() {
       <div className="flex w-full flex-col items-center justify-center gap-4">
         <h1 className="text-3xl font-semibold">Homework</h1>
         <p className="font-medium">
+          {"For "}
           <a
             href="https://animations.dev/"
             target="_blank"
@@ -16,12 +17,12 @@ export default function Home() {
           </a>
           {" by "}
           <a
-            href="https://emilkowal.ski/"
+            href="https://github.com/Ganthology/animations-on-the-web-exercise"
             target="_blank"
             rel="noopener noreferrer"
             className="italic underline hover:bg-gray-900 hover:text-gray-50"
           >
-            emilkowal.ski
+            @Ganthology
           </a>
         </p>
         <TableOfContent />
