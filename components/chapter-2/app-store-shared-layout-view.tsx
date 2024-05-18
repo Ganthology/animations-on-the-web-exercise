@@ -26,72 +26,74 @@ export const AppStoreSharedLayoutView = () => {
     <>
       <AnimatePresence>
         {activeGame ? (
-          <>
+          <motion.div
+            className="pointer-events-none absolute inset-0 z-10 bg-black/20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              layout: { duration: 0.5, type: "spring", bounce: 0.5 },
+            }}
+          />
+        ) : null}
+      </AnimatePresence>
+      <AnimatePresence>
+        {activeGame ? (
+          <div className="absolute inset-0 z-10 grid place-items-center">
             <motion.div
-              className="pointer-events-none absolute inset-0 z-10 bg-black/20"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                layout: { duration: 0.5, type: "spring", bounce: 0.5 },
-              }}
-            />
-            <div className="absolute inset-0 z-10 grid place-items-center">
-              <motion.div
-                className="flex h-fit w-[500px] cursor-pointer flex-col items-start gap-4 overflow-hidden bg-white p-4"
-                ref={ref}
-                style={{ borderRadius: 12 }}
-                layoutId={activeGame.title + "container"}
-                // transition={{
-                //   layout: { duration: 0.5, type: "spring", bounce: 0.2 },
-                // }}
-              >
-                <div className="flex w-full items-center gap-4">
-                  <motion.img
-                    layoutId={activeGame.title + "image"}
-                    height={56}
-                    width={56}
-                    alt="Game"
-                    src={activeGame.image}
-                    style={{ borderRadius: 12 }}
-                  />
-                  <div className="flex grow items-center justify-between">
-                    <div className="flex flex-col p-0">
-                      <motion.h2
-                        className="text-sm font-medium"
-                        layoutId={activeGame.title + "title"}
-                      >
-                        {activeGame.title}
-                      </motion.h2>
-                      <motion.p
-                        className="text-sm text-[#63635d]"
-                        layoutId={activeGame.title + "description"}
-                      >
-                        {activeGame.description}
-                      </motion.p>
-                    </div>
-                    <motion.button
-                      className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]"
-                      layoutId={activeGame.title + "button"}
+              className="flex h-fit w-[500px] cursor-pointer flex-col items-start gap-4 overflow-hidden bg-white p-4"
+              ref={ref}
+              style={{ borderRadius: 12 }}
+              layoutId={activeGame.title + "container"}
+              // transition={{
+              //   layout: { duration: 0.5, type: "spring", bounce: 0.2 },
+              // }}
+            >
+              <div className="flex w-full items-center gap-4">
+                <motion.img
+                  layoutId={activeGame.title + "image"}
+                  height={56}
+                  width={56}
+                  alt="Game"
+                  src={activeGame.image}
+                  style={{ borderRadius: 12 }}
+                />
+                <div className="flex grow items-center justify-between">
+                  <div className="flex flex-col p-0">
+                    <motion.h2
+                      className="text-sm font-medium"
+                      layoutId={activeGame.title + "title"}
                     >
-                      Get
-                    </motion.button>
+                      {activeGame.title}
+                    </motion.h2>
+                    <motion.p
+                      className="text-sm text-[#63635d]"
+                      layoutId={activeGame.title + "description"}
+                    >
+                      {activeGame.description}
+                    </motion.p>
                   </div>
+                  <motion.button
+                    className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]"
+                    layoutId={activeGame.title + "button"}
+                  >
+                    Get
+                  </motion.button>
                 </div>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 0.1,
-                  }}
-                  className="text-sm text-[#63635d]"
-                >
-                  {activeGame.longDescription}
-                </motion.p>
-              </motion.div>
-            </div>
-          </>
+              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                  duration: 0.1,
+                }}
+                className="text-sm text-[#63635d]"
+              >
+                {activeGame.longDescription}
+              </motion.p>
+            </motion.div>
+          </div>
         ) : null}
       </AnimatePresence>
       <ul className="relative mx-0 my-12 flex w-full flex-col items-center p-0">
