@@ -27,15 +27,23 @@ export const AppStoreSharedLayoutView = () => {
     <>
       {activeGame ? (
         <>
-          <div className="pointer-events-none absolute inset-0 z-10 bg-black/20" />
+          <motion.div
+            className="pointer-events-none absolute inset-0 z-10 bg-black/20"
+            // animate={{ opacity: activeGame ? 1 : 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.1 } }}
+          />
           <div className="absolute inset-0 z-10 grid place-items-center">
-            <div
+            <motion.div
               className="flex h-fit w-[500px] cursor-pointer flex-col items-start gap-4 overflow-hidden bg-white p-4"
               ref={ref}
               style={{ borderRadius: 12 }}
+              layoutId={activeGame.title + "container"}
             >
               <div className="flex w-full items-center gap-4">
-                <Image
+                <motion.img
+                  layoutId={activeGame.title + "image"}
                   height={56}
                   width={56}
                   alt="Game"
@@ -44,32 +52,45 @@ export const AppStoreSharedLayoutView = () => {
                 />
                 <div className="flex grow items-center justify-between">
                   <div className="flex flex-col p-0">
-                    <h2 className="text-sm font-medium">{activeGame.title}</h2>
-                    <p className="text-sm text-[#63635d]">
+                    <motion.h2
+                      className="text-sm font-medium"
+                      layoutId={activeGame.title + "title"}
+                    >
+                      {activeGame.title}
+                    </motion.h2>
+                    <motion.p
+                      className="text-sm text-[#63635d]"
+                      layoutId={activeGame.title + "description"}
+                    >
                       {activeGame.description}
-                    </p>
+                    </motion.p>
                   </div>
-                  <button className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]">
+                  <motion.button
+                    className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]"
+                    layoutId={activeGame.title + "button"}
+                  >
                     Get
-                  </button>
+                  </motion.button>
                 </div>
               </div>
-              <p className="text-sm text-[#63635d]">
+              <motion.p layout className="text-sm text-[#63635d]">
                 {activeGame.longDescription}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
         </>
       ) : null}
       <ul className="relative mx-0 my-12 flex w-full flex-col items-center p-0">
         {GAMES.map((game) => (
-          <li
+          <motion.li
             key={game.title}
             onClick={() => setActiveGame(game)}
             style={{ borderRadius: 8 }}
             className="group flex w-[386px] cursor-pointer items-center gap-4 p-0"
+            layoutId={game.title + "container"}
           >
-            <Image
+            <motion.img
+              layoutId={game.title + "image"}
               height={56}
               width={56}
               alt="Game"
@@ -78,14 +99,27 @@ export const AppStoreSharedLayoutView = () => {
             />
             <div className="flex grow items-center justify-between border-b border-solid border-[#d4d6d861] group-last:border-none">
               <div className="flex flex-col px-0 py-4">
-                <h2 className="text-sm font-medium">{game.title}</h2>
-                <p className="text-sm text-[#63635d]">{game.description}</p>
+                <motion.h2
+                  className="text-sm font-medium"
+                  layoutId={game.title + "title"}
+                >
+                  {game.title}
+                </motion.h2>
+                <motion.p
+                  className="text-sm text-[#63635d]"
+                  layoutId={game.title + "description"}
+                >
+                  {game.description}
+                </motion.p>
               </div>
-              <button className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]">
+              <motion.button
+                className="rounded-full bg-[#f1f0ef] px-3 py-1 text-xs font-semibold text-[#007aff]"
+                layoutId={game.title + "button"}
+              >
                 Get
-              </button>
+              </motion.button>
             </div>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </>
