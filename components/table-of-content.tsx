@@ -6,10 +6,10 @@ import { AnimatePresence, motion } from "framer-motion"
 export const TableOfContent = () => {
   const router = useRouter()
   return (
-    <AnimatePresence>
-      <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {ROUTES.map((route) => (
-          <>
+    <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      {ROUTES.map((route) => (
+        <>
+          <AnimatePresence mode="popLayout">
             <motion.li
               key={route.path}
               className="relative z-10 cursor-pointer rounded-md border border-gray-900 bg-yellow-50 px-3 pb-24 pt-3"
@@ -25,10 +25,10 @@ export const TableOfContent = () => {
               <h1 className="text-lg font-semibold">{route.name}</h1>
               <p className="text-xs">{route.description}</p>
             </motion.li>
-          </>
-        ))}
-      </ul>
-    </AnimatePresence>
+          </AnimatePresence>
+        </>
+      ))}
+    </ul>
   )
 }
 
@@ -67,5 +67,11 @@ const ROUTES = [
     path: "/framer-intro/copy-code-snippet",
     name: "Copy Code Snippet",
     description: "Copy code snippet with animation.",
+  },
+  {
+    path: "/framer-intro/animating-height",
+    name: "Animating Height",
+    description:
+      "Animate height of a div from auto to auto. Using family drawer as example.",
   },
 ]
