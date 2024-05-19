@@ -36,9 +36,26 @@ export const SmoothButtonView = () => {
           }, 3500)
         }}
       >
-        <span className="flex w-full items-center justify-center text-white [text-shadow:_0_0.5px_1.5px_rgba(0_0_0.16)]">
-          {buttonCopy[buttonState]}
-        </span>
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.span
+            // key using buttonState to indicate unmounting
+            key={buttonState}
+            className="flex w-full items-center justify-center text-white [text-shadow:_0_0.5px_1.5px_rgba(0_0_0.16)]"
+            initial={{ y: -25, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{
+              y: 25,
+              opacity: 0,
+            }}
+            transition={{
+              type: "spring",
+              duration: 0.3,
+              bounce: 0,
+            }}
+          >
+            {buttonCopy[buttonState]}
+          </motion.span>
+        </AnimatePresence>
       </button>
     </div>
   )
