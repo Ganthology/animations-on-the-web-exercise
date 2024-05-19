@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Check, Copy } from "lucide-react"
 
@@ -13,16 +13,25 @@ export const CopyCodeSnippetView = () => {
   const [copied, setCopied] = useState(false)
 
   const copy = () => {
-    navigator.clipboard.writeText("Copied some code!")
-    setCopied(true)
-    setTimeout(() => setCopied(false), 1000)
+    if (!copied) {
+      navigator.clipboard.writeText("Copied some code!")
+      setCopied(true)
+    }
   }
+
+  useEffect(() => {
+    if (copied) {
+      const timeout = setTimeout(() => setCopied(false), 1000)
+      return () => clearTimeout(timeout)
+    }
+  }, [copied])
 
   return (
     <button
       aria-label="Copy code snippet"
       onClick={copy}
       className="rounded-lg border border-gray-700 p-2"
+      disabled={copied}
     >
       <AnimatePresence mode="wait" initial={false}>
         {copied ? (
