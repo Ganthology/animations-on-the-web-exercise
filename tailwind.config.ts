@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
+import plugin from "tailwindcss/plugin"
 
 const config: Config = {
   content: [
@@ -13,8 +14,29 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        "spinner-spin": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0.15" },
+        },
+      },
     },
   },
-  plugins: [],
-};
-export default config;
+  plugins: [
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            }
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      )
+    }),
+  ],
+}
+export default config
