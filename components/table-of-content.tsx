@@ -58,4 +58,14 @@ const ROUTES = [
     name: "App Store Shared Layout",
     description: "More layoutId magic, item transitioned into modal/popup.",
   },
+  {
+    path: "/framer-intro/smooth-button",
+    name: "Smooth Button",
+    description: "Create a smooth button with loading and success states.",
+  },
+  {
+    path: "/framer-intro/copy-code-snippet",
+    name: "Copy Code Snippet",
+    description: "Copy code snippet with animation.",
+  },
 ]
