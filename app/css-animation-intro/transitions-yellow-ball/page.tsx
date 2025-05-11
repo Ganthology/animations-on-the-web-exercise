@@ -7,7 +7,7 @@ export default function TransitionsYellowBall() {
       <div className="box" />
 
       <h1 className="text-xl font-medium">
-        Solution 1 (won't flicker when hover)
+        Solution 1 (won&apos;t flicker when hover)
       </h1>
       <div className="box-1">
         <div className="box-inner" />

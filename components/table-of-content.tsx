@@ -88,6 +88,11 @@ const CSS_ANIMATION_INTRO_ROUTES = [
     name: "Transitions Yellow Ball",
     description: "Animate a yellow ball with CSS.",
   },
+  {
+    path: "/css-animation-intro/transitions-card-hover",
+    name: "Transitions Card Hover",
+    description: "Animate a card with CSS.",
+  },
 ]
 
 const ROUTES = [...FRAMER_INTRO_ROUTES, ...CSS_ANIMATION_INTRO_ROUTES]
