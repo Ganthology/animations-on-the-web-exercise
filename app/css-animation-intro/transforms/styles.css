@@ -1,0 +1,63 @@
+.wrapper {
+  display: grid;
+}
+
+.card {
+  width: 356px;
+  height: 74px;
+  box-shadow: 0 4px 12px #0000001a;
+  border: 1px solid #eeeeee;
+  background: white;
+  border-radius: 8px;
+  grid-area: 1 / 1;
+}
+
+/* my solution */
+.card-with-transform {
+  width: 356px;
+  height: 74px;
+  box-shadow: 0 4px 12px #0000001a;
+  border: 1px solid #eeeeee;
+  background: white;
+  border-radius: 8px;
+  grid-area: 1 / 1;
+  transform: translateY(calc(var(--translate-y) * -10px))
+    scale(var(--scale));
+}
+
+/* solution 1 */
+.card-solution-1 {
+  width: 356px;
+  height: 74px;
+  box-shadow: 0 4px 12px #0000001a;
+  border: 1px solid #eeeeee;
+  background: white;
+  border-radius: 8px;
+  grid-area: 1 / 1;
+  /* solution 1 */
+  transform: scale(0.9) translateY(-26%);
+}
+
+.card-solution-1:nth-child(2) {
+  transform: scale(0.95) translateY(-13%);
+}
+
+.card-solution-1:nth-child(3) {
+  transform: scale(1) translateY(0);
+}
+
+/* solution 2 */
+.card-solution-2 {
+  width: 356px;
+    height: 74px;
+    box-shadow: 0 4px 12px #0000001a;
+    border: 1px solid #eeeeee;
+    background: white;
+    border-radius: 8px;
+  grid-area: 1 / 1;
+  /* solution 2 */
+  --scale-increment: 0.05;
+  --translate-increment: -13%;
+  transform: scale(calc(1 - var(--index) * var(--scale-increment)))
+    translateY(calc(var(--index) * var(--translate-increment)));
+}

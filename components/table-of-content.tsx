@@ -1,7 +1,8 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
+
+import { useRouter } from "next/navigation"
 
 export const TableOfContent = () => {
   const router = useRouter()
@@ -32,7 +33,7 @@ export const TableOfContent = () => {
   )
 }
 
-const ROUTES = [
+const FRAMER_INTRO_ROUTES = [
   {
     path: "/framer-intro/motion-div",
     name: "Motion Div",
@@ -75,3 +76,13 @@ const ROUTES = [
       "Animate height of a div from auto to auto. Using family drawer as example.",
   },
 ]
+
+const CSS_ANIMATION_INTRO_ROUTES = [
+  {
+    path: "/css-animation-intro/transforms",
+    name: "Transforms",
+    description: "Animate transforms with CSS.",
+  },
+]
+
+const ROUTES = [...FRAMER_INTRO_ROUTES, ...CSS_ANIMATION_INTRO_ROUTES]
