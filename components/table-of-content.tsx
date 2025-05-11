@@ -83,6 +83,11 @@ const CSS_ANIMATION_INTRO_ROUTES = [
     name: "Transforms",
     description: "Animate transforms with CSS.",
   },
+  {
+    path: "/css-animation-intro/transitions-yellow-ball",
+    name: "Transitions Yellow Ball",
+    description: "Animate a yellow ball with CSS.",
+  },
 ]
 
 const ROUTES = [...FRAMER_INTRO_ROUTES, ...CSS_ANIMATION_INTRO_ROUTES]
