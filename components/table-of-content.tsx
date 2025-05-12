@@ -98,6 +98,11 @@ const CSS_ANIMATION_INTRO_ROUTES = [
     name: "Transitions Download Arrow",
     description: "Animate a download arrow with CSS.",
   },
+  {
+    path: "/css-animation-intro/transitions-toaster",
+    name: "Transitions Toaster",
+    description: "Animate a toaster with CSS.",
+  },
 ]
 
 const ROUTES = [...FRAMER_INTRO_ROUTES, ...CSS_ANIMATION_INTRO_ROUTES]
