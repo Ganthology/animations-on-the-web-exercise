@@ -93,6 +93,11 @@ const CSS_ANIMATION_INTRO_ROUTES = [
     name: "Transitions Card Hover",
     description: "Animate a card with CSS.",
   },
+  {
+    path: "/css-animation-intro/transitions-download-arrow",
+    name: "Transitions Download Arrow",
+    description: "Animate a download arrow with CSS.",
+  },
 ]
 
 const ROUTES = [...FRAMER_INTRO_ROUTES, ...CSS_ANIMATION_INTRO_ROUTES]
